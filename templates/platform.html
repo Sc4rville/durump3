@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr" prefix="og: https://ogp.me/ns#">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <meta name="description" content="{{ description }}">
+    <meta name="keywords" content="{{ keywords }}">
+    <meta name="author" content="ytbmp3">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+    <meta name="theme-color" content="#06060a">
+    <link rel="canonical" href="{{ request.url_root }}{{ request.path.lstrip('/') }}">
+    <link rel="alternate" hreflang="fr" href="{{ request.url_root }}{{ request.path.lstrip('/') }}">
+    <link rel="alternate" hreflang="x-default" href="{{ request.url_root }}{{ request.path.lstrip('/') }}">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="/static/icon-192.png" type="image/png">
+    <link rel="apple-touch-icon" href="/static/icon-192.png">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="ytbmp3">
+    <meta property="og:title" content="{{ title }}">
+    <meta property="og:description" content="{{ description }}">
+    <meta property="og:url" content="{{ request.url_root }}{{ request.path.lstrip('/') }}">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:image" content="{{ request.url_root }}static/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ title }}">
+    <meta name="twitter:description" content="{{ description }}">
+    <meta name="twitter:image" content="{{ request.url_root }}static/og-image.png">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "{{ title }}",
+        "description": "{{ description }}",
+        "url": "{{ request.url_root }}{{ request.path.lstrip('/') }}",
+        "isPartOf": {
+            "@type": "WebApplication",
+            "name": "ytbmp3",
+            "url": "{{ request.url_root }}"
+        },
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                { "@type": "ListItem", "position": 1, "name": "ytbmp3", "item": "{{ request.url_root }}" },
+                { "@type": "ListItem", "position": 2, "name": "{{ platform_name }} MP3", "item": "{{ request.url_root }}{{ request.path.lstrip('/') }}" }
+            ]
+        }
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-0: #06060a; --bg-1: #0c0c14; --bg-2: #12121e; --bg-3: #1a1a2a;
+            --glass: rgba(255,255,255,.03); --glass-border: rgba(255,255,255,.06);
+            --text-1: #f0f0f5; --text-2: rgba(240,240,245,.55); --text-3: rgba(240,240,245,.3);
+            --accent-h: 340; --accent: hsl(var(--accent-h),85%,60%);
+            --accent-soft: hsla(var(--accent-h),85%,60%,.15);
+            --success: #34d399; --success-soft: rgba(52,211,153,.12);
+            --radius: 16px; --radius-sm: 10px; --radius-pill: 100px;
+            --transition: .3s cubic-bezier(.4,0,.2,1);
+            --s-xs:.25rem; --s-sm:.5rem; --s-md:1rem; --s-lg:1.5rem; --s-xl:2rem; --s-2xl:3rem;
+            --t-xs:.75rem; --t-sm:.85rem; --t-base:1rem; --t-lg:1.15rem; --t-xl:1.5rem; --t-2xl:2rem; --t-3xl:3rem;
+        }
+        body { font-family:'Inter',sans-serif; background:var(--bg-0); color:var(--text-1); min-height:100vh; -webkit-font-smoothing:antialiased; }
+        main { max-width:700px; margin:0 auto; padding:var(--s-2xl) var(--s-md); }
+        .breadcrumb { font-size:var(--t-xs); color:var(--text-3); margin-bottom:var(--s-xl); }
+        .breadcrumb a { color:var(--accent); text-decoration:none; }
+        .breadcrumb a:hover { text-decoration:underline; }
+        h1 { font-family:'JetBrains Mono',monospace; font-size:var(--t-3xl); font-weight:900; letter-spacing:-.04em; line-height:1.1; margin-bottom:var(--s-md);
+            background:linear-gradient(135deg,hsl(330,90%,65%),hsl(270,80%,70%),hsl(210,90%,70%));
+            background-size:300% 300%; -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+            animation:shimmer 8s ease-in-out infinite; }
+        @keyframes shimmer { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+        .lead { font-size:var(--t-lg); color:var(--text-2); line-height:1.6; margin-bottom:var(--s-2xl); }
+        .cta-box { text-align:center; padding:var(--s-2xl); background:var(--glass); border:1px solid var(--glass-border); border-radius:var(--radius); margin:var(--s-2xl) 0; }
+        .cta-box a { display:inline-block; padding:var(--s-md) var(--s-xl); background:var(--accent); border-radius:var(--radius); color:#fff; font-weight:700; font-size:var(--t-base); text-decoration:none; transition:all var(--transition); }
+        .cta-box a:hover { transform:translateY(-2px); box-shadow:0 8px 30px hsla(var(--accent-h),100%,65%,.3); }
+        .tag { display:inline-block; padding:var(--s-xs) var(--s-sm); background:var(--success-soft); border:1px solid rgba(52,211,153,.2); border-radius:var(--radius-pill); font-size:var(--t-xs); font-weight:700; color:var(--success); letter-spacing:.05em; text-transform:uppercase; margin-bottom:var(--s-lg); }
+        h2 { font-size:var(--t-xl); font-weight:700; margin:var(--s-2xl) 0 var(--s-md); }
+        .content p { color:var(--text-2); line-height:1.7; margin-bottom:var(--s-md); font-size:var(--t-sm); }
+        .content ul { color:var(--text-2); font-size:var(--t-sm); line-height:1.7; margin-bottom:var(--s-md); padding-left:var(--s-lg); }
+        .content li { margin-bottom:var(--s-xs); }
+        .content a { color:var(--accent); text-decoration:none; }
+        .content a:hover { text-decoration:underline; }
+
+        /* links to the other platforms */
+        .cross-links { margin-top:var(--s-2xl); padding-top:var(--s-xl); border-top:1px solid var(--glass-border); }
+        .cross-links h3 { font-size:var(--t-sm); font-weight:600; color:var(--text-3); text-transform:uppercase; letter-spacing:.08em; margin-bottom:var(--s-md); }
+        .cross-grid { display:flex; flex-wrap:wrap; gap:var(--s-sm); }
+        .cross-grid a { padding:var(--s-sm) var(--s-md); background:var(--glass); border:1px solid var(--glass-border); border-radius:var(--radius-sm); font-size:var(--t-sm); color:var(--text-2); text-decoration:none; font-weight:500; transition:all var(--transition); }
+        .cross-grid a:hover { border-color:rgba(255,255,255,.15); color:var(--text-1); background:rgba(255,255,255,.06); }
+
+        footer { text-align:center; padding:var(--s-2xl) var(--s-md); }
+        .footer-nav { display:flex; flex-wrap:wrap; justify-content:center; gap:var(--s-sm) var(--s-md); margin-bottom:var(--s-sm); }
+        .footer-nav a, footer a { color:var(--text-3); text-decoration:none; font-size:var(--t-xs); font-weight:500; transition:color var(--transition); }
+        .footer-nav a:hover, footer a:hover { color:var(--accent); }
+        .footer-copy { font-size:var(--t-xs); color:var(--text-3); opacity:.5; }
+
+        @media(max-width:540px) { h1{font-size:var(--t-2xl)} main{padding:var(--s-lg) var(--s-md)} }
+        :focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+        ::selection { background:var(--accent-soft); color:var(--text-1); }
+    </style>
+</head>
+<body>
+<main>
+
+    <nav class="breadcrumb" aria-label="Fil d'Ariane">
+        <a href="/">ytbmp3</a> &rsaquo; {{ platform_name }} MP3
+    </nav>
+
+    <span class="tag">Gratuit &middot; Sans pub &middot; Pour toujours</span>
+
+    <h1>{{ h1 }}</h1>
+    <p class="lead">{{ lead }}</p>
+
+    <div class="cta-box">
+        <p style="color:var(--text-2); margin-bottom:var(--s-md);">Pr&ecirc;t &agrave; convertir ?</p>
+        <a href="/">Ouvrir ytbmp3</a>
+    </div>
+
+    <div class="content">
+        <h2>Comment convertir {{ platform_name }} en MP3 ?</h2>
+        <p><strong>1.</strong> Ouvre la vid&eacute;o {{ platform_name }} et copie son lien (URL).</p>
+        <p><strong>2.</strong> Colle le lien dans <a href="/">ytbmp3</a> et clique sur <strong>Convertir</strong>.</p>
+        <p><strong>3.</strong> T&eacute;l&eacute;charge ton MP3 en qualit&eacute; maximale (320 kbps).</p>
+
+        <h2>Pourquoi ytbmp3 pour {{ platform_name }} ?</h2>
+        <ul>
+            {% for point in points %}
+            <li>{{ point }}</li>
+            {% endfor %}
+        </ul>
+
+        {{ extra_content|safe }}
+    </div>
+
+    <div class="cta-box">
+        <a href="/">Convertir {{ platform_name }} en MP3 maintenant</a>
+    </div>
+
+    <!-- internal links between platform pages -->
+    <div class="cross-links">
+        <h3>Autres convertisseurs</h3>
+        <div class="cross-grid">
+            {% for slug, data in platforms.items() %}
+                {% if data.platform_name != platform_name %}
+                <a href="/{{ slug }}">{{ data.platform_name }} MP3</a>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+</main>
+<footer>
+    <nav class="footer-nav" aria-label="Convertisseurs">
+        <a href="/">Accueil</a>
+        {% for slug, data in platforms.items() %}
+        <a href="/{{ slug }}">{{ data.platform_name }} MP3</a>
+        {% endfor %}
+    </nav>
+    <p class="footer-copy">ytbmp3 &mdash; logiciel libre &amp; open source &mdash; convertisseur {{ platform_name }} MP3 gratuit</p>
+</footer>
+</body>
+</html>
